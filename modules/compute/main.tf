@@ -15,7 +15,7 @@ resource "google_compute_instance" "instance_1" {
   }
 
   machine_type = "${var.machine_type}"
-  name         = "${var.env}-instance-1"
+  name         = "${var.env}-test_instance-1"
 
   network_interface {
 
