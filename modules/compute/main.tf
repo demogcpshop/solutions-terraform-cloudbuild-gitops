@@ -1,14 +1,29 @@
-resource "google_compute_instance" "instance_1" {
-
-  machine_type = "${var.machine_type}"
+resource "google_compute_instance" "test_instance" {
   name         = "${var.env}-test_instance"
+  machine_type = "${var.machine_type}"
+  zone         = "${var.zone}"
 
-  project = "norse-ward-356309"
-
-  service_account {
-  scopes = ["https://www.googleapis.com/auth/devstorage.read_only", "https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring.write", "https://www.googleapis.com/auth/service.management.readonly", "https://www.googleapis.com/auth/servicecontrol", "https://www.googleapis.com/auth/trace.append"]
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-9"
+    }
   }
 
-  zone = "${var.zone}"
+  // Local SSD disk
+  scratch_disk {
+    interface = "SCSI"
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {
+      // Ephemeral public IP
+    }
+  }
+
+  service_account {
+    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+     scopes = ["https://www.googleapis.com/auth/devstorage.read_only", "https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring.write", "https://www.googleapis.com/auth/service.management.readonly", "https://www.googleapis.com/auth/servicecontrol", "https://www.googleapis.com/auth/trace.append"]
+  }
 }
-# terraform import google_compute_instance.instance_1 projects/norse-ward-356309/zones/europe-west1-b/instances/instance-1
