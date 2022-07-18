@@ -41,6 +41,4 @@ module "firewall" {
 
 module "compute" {
   source  = "../../modules/compute"
-  project = "${var.project}"
-  env     = "${local.env}"
 }
