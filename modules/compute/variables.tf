@@ -3,7 +3,7 @@ variable "env" {}
 
 variable "zone" {
     type = string
-    default = "us-west1"
+    default = "us-west1-a"
 }
 
 variable "machine_type" {
