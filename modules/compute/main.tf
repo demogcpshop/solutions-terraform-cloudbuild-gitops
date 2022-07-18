@@ -21,10 +21,7 @@ resource "google_compute_instance" "instance_1" {
   name         = "instance-1"
 
   network_interface {
-    access_config {
-      nat_ip       = "34.140.225.129"
-      network_tier = "PREMIUM"
-    }
+
 
     network            = "https://www.googleapis.com/compute/v1/projects/norse-ward-356309/global/networks/default"
     network_ip         = "10.132.0.2"
