@@ -39,8 +39,8 @@ module "firewall" {
   subnet  = "${module.vpc.subnet}"
 }
 
-module "compute" {
- source  = "../../modules/compute"
- project = "${var.project}"
- env     = "${local.env}"
-}
+#module "compute" {
+# source  = "../../modules/compute"
+# project = "${var.project}"
+# env     = "${local.env}"
+#}
