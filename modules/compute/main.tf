@@ -18,16 +18,15 @@ resource "google_compute_instance" "instance_1" {
   name         = "${var.env}-test-instance-1"
 
   network_interface {
-
-
     network            = "https://www.googleapis.com/compute/v1/projects/${var.project}/global/networks/default"
     #network_ip         = "10.132.0.2"
     stack_type         = "IPV4_ONLY"
-    subnetwork         = "https://www.googleapis.com/compute/v1/projects/${var.project}/regions/us-west1/subnetworks/default"
+    subnetwork         = "https://www.googleapis.com/compute/v1/projects/${var.project}/regions/${var.region}/subnetworks/default"
     subnetwork_project = "${var.project}"
   }
 
   project = "${var.project}"
+  zone = "${var.zone}"
 
   reservation_affinity {
     type = "ANY_RESERVATION"
@@ -39,7 +38,7 @@ resource "google_compute_instance" "instance_1" {
     }
 
   service_account {
-    email  = "64091002852-compute@developer.gserviceaccount.com"
+    #email  = "64091002852-compute@developer.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/devstorage.read_only", "https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring.write", "https://www.googleapis.com/auth/service.management.readonly", "https://www.googleapis.com/auth/servicecontrol", "https://www.googleapis.com/auth/trace.append"]
   }
 
@@ -48,6 +47,5 @@ resource "google_compute_instance" "instance_1" {
     enable_vtpm                 = true
   }
 
-  zone = "${var.zone}"
+
 }
-# terraform import google_compute_instance.instance_1 projects/norse-ward-356309/zones/europe-west1-b/instances/instance-1

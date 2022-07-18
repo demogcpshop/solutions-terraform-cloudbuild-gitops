@@ -6,6 +6,11 @@ variable "zone" {
     default = "us-west1-a"
 }
 
+variable "region" {
+    type = string
+    default = "us-west1"
+}
+
 variable "machine_type" {
     type = string
     default = "e2-micro"
