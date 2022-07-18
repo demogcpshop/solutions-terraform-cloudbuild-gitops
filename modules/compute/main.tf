@@ -8,9 +8,6 @@ resource "google_compute_instance" "instance_1" {
       size  = 10
       type  = "pd-balanced"
     }
-
-    mode   = "READ_WRITE"
-    source = "https://www.googleapis.com/compute/v1/projects/norse-ward-356309/zones/europe-west1-b/disks/instance-1"
   }
 
   confidential_instance_config {
