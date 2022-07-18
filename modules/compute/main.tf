@@ -14,8 +14,8 @@ resource "google_compute_instance" "instance_1" {
     enable_confidential_compute = false
   }
 
-  machine_type = "e2-micro"
-  name         = "instance-1"
+  machine_type = "${var.machine_type}"
+  name         = "${var.env}-instance-1"
 
   network_interface {
 
@@ -24,10 +24,10 @@ resource "google_compute_instance" "instance_1" {
     network_ip         = "10.132.0.2"
     stack_type         = "IPV4_ONLY"
     subnetwork         = "https://www.googleapis.com/compute/v1/projects/norse-ward-356309/regions/europe-west1/subnetworks/default"
-    subnetwork_project = "norse-ward-356309"
+    subnetwork_project = "${var.project}"
   }
 
-  project = "norse-ward-356309"
+  project = "${var.project}"
 
   reservation_affinity {
     type = "ANY_RESERVATION"
@@ -48,6 +48,6 @@ resource "google_compute_instance" "instance_1" {
     enable_vtpm                 = true
   }
 
-  zone = "europe-west1-b"
+  zone = "${var.zone}"
 }
 # terraform import google_compute_instance.instance_1 projects/norse-ward-356309/zones/europe-west1-b/instances/instance-1
