@@ -23,7 +23,7 @@ resource "google_compute_instance" "instance_1" {
     network            = "https://www.googleapis.com/compute/v1/projects/norse-ward-356309/global/networks/default"
     network_ip         = "10.132.0.2"
     stack_type         = "IPV4_ONLY"
-    subnetwork         = "https://www.googleapis.com/compute/v1/projects/norse-ward-356309/regions/${var.zone}/subnetworks/default"
+    subnetwork         = "https://www.googleapis.com/compute/v1/projects/norse-ward-356309/regions/us-west1/subnetworks/default"
     subnetwork_project = "${var.project}"
   }
 
