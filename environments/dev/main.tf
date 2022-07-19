@@ -44,3 +44,9 @@ module "firewall" {
 # project = "${var.project}"
 # env     = "${local.env}"
 #}
+
+module "storage" {
+ source  = "../../modules/storage"
+ project = "${var.project}"
+ env     = "${local.env}"
+}
