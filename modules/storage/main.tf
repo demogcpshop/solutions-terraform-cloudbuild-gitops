@@ -1,4 +1,4 @@
-resource "google_storage_bucket" "#test-bucket3245" {
+resource "google_storage_bucket" "test-bucket3245" {
   force_destroy               = false
   location                    = "#${var.region}"
   name                        = "#${var.env}-test-bucket3245"
