@@ -60,11 +60,11 @@ resource "google_notebooks_instance" "notebook-test-1" {
 
   project = "${var.project}"
 
-  scheduling {
-    automatic_restart   = true
-    on_host_maintenance = "MIGRATE"
-    #provisioning_model  = "STANDARD"
-  }
+ # scheduling {
+ #  automatic_restart   = true
+ #   on_host_maintenance = "MIGRATE"
+ #   #provisioning_model  = "STANDARD"
+ # }
 
  # service_account {
  #   email  = "64091002852-compute@developer.gserviceaccount.com"
