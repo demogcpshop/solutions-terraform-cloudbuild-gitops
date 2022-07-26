@@ -21,7 +21,7 @@ resource "google_compute_instance" "notebook-test-1" {
  #  }
 
     mode   = "READ_WRITE"
- #   source = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/notebook-test-1-boot"
+    source = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/notebook-test-1-boot"
   }
 
   labels = {
