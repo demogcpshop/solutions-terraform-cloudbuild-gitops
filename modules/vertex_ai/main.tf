@@ -52,7 +52,7 @@ resource "google_compute_instance" "notebook-test-1" {
     }
 
     network            = "https://www.googleapis.com/compute/v1/projects/${var.project}/global/networks/default"
-    network_ip         = "10.138.0.5"
+    # network_ip         = "10.138.0.5"
     stack_type         = "IPV4_ONLY"
     subnetwork         = "https://www.googleapis.com/compute/v1/projects/${var.project}/regions/${var.region}/subnetworks/default"
     subnetwork_project = "${var.project}"
