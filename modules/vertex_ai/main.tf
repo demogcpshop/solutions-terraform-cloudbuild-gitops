@@ -1,4 +1,4 @@
-resource "google_compute_instance" "notebook-test-1" {
+resource "google_notebooks_instance" "notebook-test-1" {
  # attached_disk {
  #  device_name = "data"
  #   mode        = "READ_WRITE"
