@@ -63,7 +63,7 @@ resource "google_compute_instance" "notebook-test-1" {
   scheduling {
     automatic_restart   = true
     on_host_maintenance = "MIGRATE"
-    provisioning_model  = "STANDARD"
+    #provisioning_model  = "STANDARD"
   }
 
   service_account {
