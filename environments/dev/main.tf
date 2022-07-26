@@ -42,7 +42,7 @@ module "firewall" {
 module "notebook" {
   source  = "../../modules/vertex_ai"
   project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
+  #subnet  = "${module.vpc.subnet}"
 }
 
 #module "compute" {
