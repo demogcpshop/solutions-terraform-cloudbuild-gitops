@@ -47,7 +47,7 @@ resource "google_compute_instance" "notebook-test-1" {
 
   network_interface {
     access_config {
-      nat_ip       = "35.230.3.109"
+      #nat_ip       = "35.230.3.109"
       network_tier = "PREMIUM"
     }
 
