@@ -39,6 +39,12 @@ module "firewall" {
   subnet  = "${module.vpc.subnet}"
 }
 
+module "notebook" {
+  source  = "../../modules/vertex_ai"
+  project = "${var.project}"
+  subnet  = "${module.vpc.subnet}"
+}
+
 #module "compute" {
 # source  = "../../modules/compute"
 # project = "${var.project}"
