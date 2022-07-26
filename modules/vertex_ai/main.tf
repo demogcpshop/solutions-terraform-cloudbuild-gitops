@@ -1,9 +1,9 @@
 resource "google_compute_instance" "notebook-test-1" {
- # attached_disk {
- #  device_name = "data"
-    #mode        = "READ_WRITE"
- #   source      = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/${var.env}-notebook-test-1-data"
- # }
+  attached_disk {
+   device_name = "data"
+ #   mode        = "READ_WRITE"
+    source      = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/notebook-test-1-data"
+  }
 
   boot_disk {
     auto_delete = true
@@ -21,7 +21,7 @@ resource "google_compute_instance" "notebook-test-1" {
  #  }
 
     mode   = "READ_WRITE"
- #   source = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/${var.env}-notebook-test-1-boot"
+ #   source = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/notebook-test-1-boot"
   }
 
   labels = {
