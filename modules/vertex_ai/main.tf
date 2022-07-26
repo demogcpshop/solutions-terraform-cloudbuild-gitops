@@ -5,24 +5,24 @@ resource "google_notebooks_instance" "notebook-test-1" {
  #   source      = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/notebook-test-1-data"
  # }
 
- boot_disk {
-   auto_delete = true
-   device_name = "boot"
+ # boot_disk {
+ #  auto_delete = true
+ #  device_name = "boot"
 
-  initialize_params {
-    image = "https://www.googleapis.com/compute/beta/projects/deeplearning-platform-release/global/images/tf-2-8-cu113-notebooks-v20220701-debian-10"
+ # initialize_params {
+ #   image = "https://www.googleapis.com/compute/beta/projects/deeplearning-platform-release/global/images/tf-2-8-cu113-notebooks-v20220701-debian-10"
 
-     labels = {
-      goog-caip-notebook-volume = ""
-     }
+ #    labels = {
+ #     goog-caip-notebook-volume = ""
+ #    }
 
-    size = 100
-     type = "pd-standard"
-  }
+ #  size = 100
+ #    type = "pd-standard"
+ # }
 
   # mode   = "READ_WRITE"
   # source = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/notebook-test-1-boot"
-  }
+  #}
 
   labels = {
     goog-caip-notebook = ""
@@ -45,18 +45,18 @@ resource "google_notebooks_instance" "notebook-test-1" {
 
   name = "${var.env}-notebook-test-1"
 
-  network_interface {
-    access_config {
-      #nat_ip       = "35.230.3.109"
-      network_tier = "PREMIUM"
-    }
+ # network_interface {
+ #   access_config {
+ #     #nat_ip       = "35.230.3.109"
+ #     network_tier = "PREMIUM"
+ #   }
 
-    network            = "https://www.googleapis.com/compute/v1/projects/${var.project}/global/networks/default"
-    # network_ip         = "10.138.0.5"
-    stack_type         = "IPV4_ONLY"
-    subnetwork         = "https://www.googleapis.com/compute/v1/projects/${var.project}/regions/${var.region}/subnetworks/default"
-    subnetwork_project = "${var.project}"
-  }
+ #   network            = "https://www.googleapis.com/compute/v1/projects/${var.project}/global/networks/default"
+ #   # network_ip         = "10.138.0.5"
+ #   stack_type         = "IPV4_ONLY"
+ #   subnetwork         = "https://www.googleapis.com/compute/v1/projects/${var.project}/regions/${var.region}/subnetworks/default"
+ #   subnetwork_project = "${var.project}"
+ # }
 
   project = "${var.project}"
 
@@ -66,10 +66,10 @@ resource "google_notebooks_instance" "notebook-test-1" {
     #provisioning_model  = "STANDARD"
   }
 
-  service_account {
-    email  = "64091002852-compute@developer.gserviceaccount.com"
-    scopes = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/userinfo.email"]
-  }
+ # service_account {
+ #   email  = "64091002852-compute@developer.gserviceaccount.com"
+ #   scopes = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/userinfo.email"]
+ # }
 
   shielded_instance_config {
     enable_integrity_monitoring = true
@@ -77,6 +77,6 @@ resource "google_notebooks_instance" "notebook-test-1" {
   }
 
   tags = ["deeplearning-vm", "notebook-instance"]
-  zone = "${var.zone}"
+  location = "${var.zone}"
 }
 # terraform import google_compute_instance.notebook-test-1 projects/${var.project}/zones/${var.zone}/instances/${var.env}-notebook-test-1
