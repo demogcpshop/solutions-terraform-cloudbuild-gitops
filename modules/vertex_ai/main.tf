@@ -2,23 +2,23 @@ resource "google_compute_instance" "notebook-test-1" {
   attached_disk {
     device_name = "data"
     #mode        = "READ_WRITE"
-    #source      = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/${var.env}-notebook-test-1-data"
+    source      = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/${var.env}-notebook-test-1-data"
   }
 
   boot_disk {
     auto_delete = true
     device_name = "boot"
 
-    initialize_params {
-      image = "https://www.googleapis.com/compute/beta/projects/deeplearning-platform-release/global/images/tf-2-8-cu113-notebooks-v20220701-debian-10"
+ #  initialize_params {
+ #    image = "https://www.googleapis.com/compute/beta/projects/deeplearning-platform-release/global/images/tf-2-8-cu113-notebooks-v20220701-debian-10"
 
-      labels = {
-        goog-caip-notebook-volume = ""
-      }
+ #     labels = {
+ #      goog-caip-notebook-volume = ""
+ #     }
 
-      size = 100
-      type = "pd-standard"
-    }
+ #    size = 100
+ #     type = "pd-standard"
+ #  }
 
     mode   = "READ_WRITE"
     source = "https://www.googleapis.com/compute/v1/projects/${var.project}/zones/${var.zone}/disks/${var.env}-notebook-test-1-boot"
