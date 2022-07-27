@@ -20,3 +20,8 @@ output "network" {
 output "subnet" {
   value = "${element(module.vpc.subnets_names, 0)}"
 }
+
+###################RouterOutputs##########
+output "router" {
+  value = google_compute_router.devrouter.name
+}

@@ -24,7 +24,9 @@ provider "google" {
 module "vpc" {
   source  = "../../modules/vpc"
   project = "${var.project}"
+  project_id = "${var.project}"
   env     = "${local.env}"
+  router= google_compute_router.devrouter.name
 }
 
 module "http_server" {
