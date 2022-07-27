@@ -24,10 +24,14 @@ provider "google" {
 module "vpc" {
   source  = "../../modules/vpc"
   project = "${var.project}"
-  project_id = "${var.project}"
   env     = "${local.env}"
-  router= google_compute_router.devrouter.name
-}
+  }
+
+  module "vpc" {
+  source  = "../../modules/router"
+  project = "${var.project}"
+  env     = "${local.env}"
+  }
 
 module "http_server" {
   source  = "../../modules/http_server"
@@ -39,6 +43,14 @@ module "firewall" {
   source  = "../../modules/firewall"
   project = "${var.project}"
   subnet  = "${module.vpc.subnet}"
+}
+
+module "NAT_Gateway" {
+  source  = "../../modules/NAT_Gateway"
+}
+
+module "router" {
+  source  = "../../modules/router"
 }
 
 #module "notebook" {
