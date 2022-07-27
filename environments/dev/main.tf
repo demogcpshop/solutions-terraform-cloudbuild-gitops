@@ -39,12 +39,6 @@ module "firewall" {
   subnet  = "${module.vpc.subnet}"
 }
 
-module "cloudNAT" {
-  source  = "../../modules/cloud_NAT"
-    project_id = "${var.project}"
-    router = "${module.cloudNAT.router_name}"
-}
-
 #module "notebook" {
 #  source  = "../../modules/vertex_ai"
 #  project = "${var.project}"
