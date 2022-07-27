@@ -41,7 +41,7 @@ module "firewall" {
 
 module "cloudNAT" {
   source  = "../../modules/cloud_NAT"
-    project = "${var.project}"
+    project_id = "${var.project}"
 }
 
 #module "notebook" {
