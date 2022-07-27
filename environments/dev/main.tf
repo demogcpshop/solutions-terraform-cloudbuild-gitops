@@ -18,7 +18,7 @@ locals {
 }
 
 provider "google" {
-  project = c
+  project = "${var.project}"
 }
 
 module "vpc" {
@@ -37,14 +37,6 @@ module "firewall" {
   source  = "../../modules/firewall"
   project = "${var.project}"
   subnet  = "${module.vpc.subnet}"
-}
-
-module "cloud-nat" {
-  source     = "terraform-google-modules/cloud-nat/google"
-  version    = "~> 1.2"
-  project_id = "${var.project}"
-  region     = "us-west1"
-  router     = google_compute_router.router.name
 }
 
 #module "notebook" {
