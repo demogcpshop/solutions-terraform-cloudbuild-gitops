@@ -39,14 +39,6 @@ module "firewall" {
   subnet  = "${module.vpc.subnet}"
 }
 
-module "NAT_Gateway" {
-  source  = "../../modules/NAT_Gateway"
-}
-
-module "router" {
-  source  = "../../modules/router"
-}
-
 #module "notebook" {
 #  source  = "../../modules/vertex_ai"
 #  project = "${var.project}"
