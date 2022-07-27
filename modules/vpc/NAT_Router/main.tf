@@ -12,7 +12,7 @@
 resource "google_compute_router" "router" {
   name    = "my-router"
   region  = "us-west1"
-  #network = google_compute_network.net.id
+  network = google_compute_network.net.id
 
   bgp {
     asn = 64514

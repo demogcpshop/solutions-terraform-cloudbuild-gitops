@@ -26,13 +26,6 @@ module "vpc" {
   project = "${var.project}"
   env     = "${local.env}"
   }
-
-  module "NAT_Router" {
-  source  = "../../modules/vpc/NAT_Router"
-  project = "${var.project}"
-  env     = "${local.env}"
-  }
-
 module "http_server" {
   source  = "../../modules/http_server"
   project = "${var.project}"
