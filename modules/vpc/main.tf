@@ -34,7 +34,7 @@ module "vpc" {
 
 
 }
-##############################Cloud Router and NAT Gateway####################################
+######################################################Cloud Router and NAT Gateway##################################################################################
 resource "google_compute_router" "router" {
   name    = "my-router"
   region  = "us-west1"
