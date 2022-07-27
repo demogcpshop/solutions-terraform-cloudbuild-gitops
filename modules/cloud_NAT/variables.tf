@@ -13,10 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-provider "google" {
-  project = "${var.project}"
-}
-
 variable "project_id" {
   type        = string
   description = "The project ID to deploy to"
