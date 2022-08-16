@@ -42,7 +42,7 @@ resource "google_storage_bucket" "tf-state" {
 }
 
 resource "google_storage_bucket_iam_member" "member" {
-  bucket = google_storage_bucket.tf-state.mtn-adam-infra-state-bucket
+  bucket = google_storage_bucket.tf-state
   role = "roles/storage.admin"
   member = "serviceAccount:${google_service_account.sa-infra.email}"
 }
