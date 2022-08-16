@@ -41,6 +41,7 @@ module "firewall" {
 module "infrastructure" {
   source  = "../../modules/infra_management"
   project = "${var.project}"
+  env     = "${local.env}"
   subnet  = "${module.vpc.subnet}"
 }
 
