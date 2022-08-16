@@ -1,6 +1,6 @@
 resource "google_service_account" "sa-name" {
   #account_id = "sa-name"
-  display_name = "mtn-adam-${var.opco}-${var.USE_CASE}"
+  display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
 }
 
 resource "google_project_iam_member" "infra_role_clouddeploy" {
@@ -22,7 +22,7 @@ resource "google_project_iam_member" "infra_role_editor" {
 }
 
 resource "google_storage_bucket" "eva" {
-  name          = "mtn-adam-${var.opco}-${var.USE_CASE}-bucket"
+  name          = "mtn-adam-${var.OPCO}-${var.USE_CASE}-bucket"
   location      = "US"
 }
 
