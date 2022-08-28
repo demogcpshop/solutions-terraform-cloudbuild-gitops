@@ -23,11 +23,11 @@ module "firewall" {
   subnet  = "${module.vpc.subnet}"
 }
 
-# module "infrastructure" {
-#   source  = "../../modules/infra_management"
-#   project = "${var.project}"
-#   env     = "${local.env}"
-#   }
+module "infrastructure" {
+  source  = "../../modules/infra_management"
+  project = "${var.project}"
+  env     = "${local.env}"
+  }
 
 #module "notebook" {
 #  source  = "../../modules/vertex_ai"
