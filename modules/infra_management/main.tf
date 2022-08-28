@@ -12,7 +12,7 @@ resource "google_project_iam_policy" "project" {
 data "google_iam_policy" "compute_admin" {
   binding {
     role = "roles/compute.admin`"
-    members = ["serviceAccount:${google_service_account.sa-infra.email}]"
+    members = "serviceAccount:${google_service_account.sa-infra.email}"
   }
 }
 
