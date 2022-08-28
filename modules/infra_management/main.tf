@@ -9,7 +9,7 @@ resource "google_project_iam_member" "sa-infra" {
   member  = "serviceAccount:${google_service_account.sa-infra}"
 }
 
-resource "google_project_iam_member" "sa-infra" {
+resource "google_project_iam_member" "sa-infra1" {
   #project = <your_gcp_project_id_here>
   role    = "roles/accesscontextmanager.policyAdmin"
   member  = "serviceAccount:${google_service_account.sa-infra}"
