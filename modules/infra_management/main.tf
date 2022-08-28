@@ -5,19 +5,7 @@ resource "google_service_account" "sa-infra" {
 
 resource "google_project_iam_member" "infra_role_clouddeploy" {
   #project = <your_gcp_project_id_here>
-  role    = "roles/clouddeploy.admin"
-  member  = "serviceAccount:${google_service_account.sa-infra.email}"
-}
-
-resource "google_project_iam_member" "infra_role_project" {
-  #project = <your_gcp_project_id_here>
-  role    = "roles/projectbilling.manager"
-  member  = "serviceAccount:${google_service_account.sa-infra.email}"
-}
-
-resource "google_project_iam_member" "infra_role_editor" {
-  #project = <your_gcp_project_id_here>
-  role    = "roles/editor"
+  role    = "roles/appengine.deployer"
   member  = "serviceAccount:${google_service_account.sa-infra.email}"
 }
 
