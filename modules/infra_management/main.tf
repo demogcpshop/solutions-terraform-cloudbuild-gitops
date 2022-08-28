@@ -9,6 +9,12 @@ resource "google_project_iam_member" "sa-infra" {
   member  = "serviceAccount:${google_service_account.sa-infra}"
 }
 
+resource "google_project_iam_member" "sa-infra" {
+  #project = <your_gcp_project_id_here>
+  role    = "roles/accesscontextmanager.policyAdmin"
+  member  = "serviceAccount:${google_service_account.sa-infra}"
+}
+
 resource "google_storage_bucket" "eva" {
   name          = "mtn-adam-${var.OPCO}-${var.USE_CASE}-bucket"
   location      = "US"
