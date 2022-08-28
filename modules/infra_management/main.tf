@@ -3,17 +3,30 @@ resource "google_service_account" "sa-infra" {
   display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
 }
 
-resource "google_project_iam_member" "sa-infra" {
-  #project = <your_gcp_project_id_here>
-  role    = "roles/appengine.deployer"
-  member  = "serviceAccount:${google_service_account.sa-infra.email}"
+resource "google_project_iam_policy" "project" {
+  #project     = "fcrecorder"
+  policy_data = data.google_iam_policy.compute_admin.policy_data
+  depends_on  = [google_service_account.sa-infra]
 }
 
-resource "google_project_iam_member" "sa-infra1" {
-  #project = <your_gcp_project_id_here>
-  role    = "roles/accesscontextmanager.policyAdmin"
-  member  = "serviceAccount:${google_service_account.sa-infra.email}"
+data "google_iam_policy" "compute_admin" {
+  binding {
+    role = "roles/compute.admin`"
+    members = ["serviceAccount:${google_service_account.sa-infra.email}]"
+  }
 }
+
+# resource "google_project_iam_member" "sa-infra" {
+#   #project = <your_gcp_project_id_here>
+#   role    = "roles/appengine.deployer"
+#   member  = "serviceAccount:${google_service_account.sa-infra.email}"
+# }
+
+# resource "google_project_iam_member" "sa-infra1" {
+#   #project = <your_gcp_project_id_here>
+#   role    = "roles/accesscontextmanager.policyAdmin"
+#   member  = "serviceAccount:${google_service_account.sa-infra.email}"
+# }
 
 resource "google_storage_bucket" "eva" {
   name          = "mtn-adam-${var.OPCO}-${var.USE_CASE}-bucket"
