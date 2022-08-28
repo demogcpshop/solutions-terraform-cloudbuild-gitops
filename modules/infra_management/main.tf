@@ -6,7 +6,7 @@ resource "google_service_account" "sa-infra" {
 resource "google_project_iam_member" "sa-infra" {
   #project = <your_gcp_project_id_here>
   role    = "roles/appengine.deployer"
-  member  = "serviceAccount:${google_service_account.sa-infra.email}"
+  member  = "serviceAccount:${google_service_account.sa-infra}"
 }
 
 resource "google_storage_bucket" "eva" {
