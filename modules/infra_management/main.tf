@@ -4,12 +4,12 @@
 # }
 
 
-# resource "google_project_iam_custom_role" "sa-infra" {
-#   role_id     = "myCustomRole"
-#   title       = "mtn-adam-${var.OPCO}-${var.USE_CASE}e"
-#   description = "A description"
-#   permissions = ["iam.roles.list", "iam.roles.create", "iam.roles.delete"]
-# }
+resource "google_project_iam_custom_role" "sa-infra" {
+  role_id     = "myCustomRole"
+  title       = "mtn-adam-${var.OPCO}-${var.USE_CASE}e"
+  description = "A description"
+  permissions = ["appengine.applications.update", "appengine.instances.delete", "appengine.instances.get"]
+}
 
 resource "google_storage_bucket" "eva" {
   name          = "mtn-adam-${var.OPCO}-${var.USE_CASE}-bucket"
