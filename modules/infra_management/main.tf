@@ -1,31 +1,14 @@
-# resource "google_service_account" "sa-infra" {
-#   account_id = "sa-infra"
-#   display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
-# }
-
-
-# resource "google_project_iam_custom_role" "sa-infra" {
-#   role_id     = "myCustomRole"
-#   title       = "mtn-adam-${var.OPCO}-${var.USE_CASE}e"
-#   description = "A description"
-#   permissions = ["appengine.applications.update", "appengine.instances.delete", "appengine.instances.get"]
-# }
-
-resource "google_service_account" "sa-infra" {
-  account_id   = "sa-infra"
-  display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
+resource "google_service_account" "sa" {
+  account_id   = "my-service-account"
+  display_name = "A service account that only Jane can use"
 }
 
-  
-resource "google_project_iam_binding" "sa-infra" {
-  #project = "${var.project}"
-  role    = "roles/logging.logWriter"
-  members = [
-    "serviceAccount:${google_service_account.sa-infra.email}"
-  ]
+resource "google_service_account_iam_binding" "admin-account-iam" {
+  service_account_id = google_service_account.sa.name
+  role               = "roles/iam.serviceAccountUser"
 
-depends_on = [
-    google_service_account.sa-infra
+  members = [
+    "user:demogcpshop@gmail.com",
   ]
 }
 
