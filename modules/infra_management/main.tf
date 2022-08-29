@@ -18,12 +18,12 @@ resource "google_service_account" "sa-infra" {
 
   
 resource "google_project_iam_binding" "sa-infra" {
-  project = "norse-ward-356309"
+  project = "${var.project}"
   role    = "roles/logging.logWriter"
   members = [
     "serviceAccount:${google_service_account.sa-infra.email}"
   ]
-  
+
 depends_on = [
     google_service_account.sa-infra
   ]
