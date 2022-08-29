@@ -10,7 +10,7 @@ output "serviceaccountid" {
 resource "google_service_account_iam_binding" "admin-account-iam" {
   #service_account_id = google_service_account.sa.name
   service_account_id = google_service_account.sa.id
-  #role               = "roles/iam.serviceAccount.admin"
+  role               = "roles/accessapproval.approver"
 
   members = [
     "user:demogcpshop@gmail.com",
