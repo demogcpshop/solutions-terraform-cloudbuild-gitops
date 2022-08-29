@@ -11,7 +11,7 @@
 #   permissions = ["appengine.applications.update", "appengine.instances.delete", "appengine.instances.get"]
 # }
 
-resource "google_service_account" "log_user" {
+resource "google_service_account" "sa-infra" {
   account_id   = "sa-infra"
   display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
 }
