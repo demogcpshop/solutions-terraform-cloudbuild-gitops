@@ -3,8 +3,13 @@ resource "google_service_account" "sa" {
   display_name = "A service account that only Jane can use"
 }
 
+output "serviceaccountid" {
+  value = google_service_account.sa.id
+}
+
 resource "google_service_account_iam_binding" "admin-account-iam" {
   #service_account_id = google_service_account.sa.name
+  service_account_id = google_service_account.sa.id
   role               = "roles/iam.serviceAccount.admin"
 
   members = [
