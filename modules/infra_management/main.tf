@@ -26,7 +26,7 @@
 
 data "google_iam_policy" "admin" {
   binding {
-    role = "roles/iam.serviceAccountUser"
+    role = "roles/owner"
 
     members = [
       "user:demogcpshop@gmail.com",
