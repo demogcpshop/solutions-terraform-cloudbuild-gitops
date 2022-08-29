@@ -11,18 +11,39 @@
 #   permissions = ["appengine.applications.update", "appengine.instances.delete", "appengine.instances.get"]
 # }
 
-resource "google_service_account" "sa-infra" {
-  account_id   = "sa-infra"
-  display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
+# resource "google_service_account" "sa-infra" {
+#   account_id   = "sa-infra"
+#   display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
+# }
+
+# resource "google_project_iam_binding" "sa-infra" {
+#   project = "norse-ward-356309"
+#   role    = "roles/logging.logWriter"
+#   members = [
+#     "serviceAccount:${google_service_account.sa-infra.email}"
+#   ]
+# }
+
+data "google_iam_policy" "admin" {
+  binding {
+    role = "roles/iam.serviceAccountUser"
+
+    members = [
+      "user:demogcpshop@gmail.com",
+    ]
+  }
 }
 
-resource "google_project_iam_binding" "sa-infra" {
-  project = "norse-ward-356309"
-  role    = "roles/logging.logWriter"
-  members = [
-    "serviceAccount:${google_service_account.sa-infra.email}"
-  ]
+resource "google_service_account" "sa" {
+  account_id   = "my-service-account"
+  display_name = "A service account that only Jane can interact with"
 }
+
+resource "google_service_account_iam_policy" "admin-account-iam" {
+  service_account_id = google_service_account.sa.name
+  policy_data        = data.google_iam_policy.admin.policy_data
+}
+
 
 resource "google_storage_bucket" "eva" {
   name          = "mtn-adam-${var.OPCO}-${var.USE_CASE}-bucket"
