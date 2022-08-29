@@ -1,7 +1,7 @@
-resource "google_service_account" "sa-infra" {
-  account_id = "sa-infra"
-  display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
-}
+# resource "google_service_account" "sa-infra" {
+#   account_id = "sa-infra"
+#   display_name = "mtn-adam-${var.OPCO}-${var.USE_CASE}"
+# }
 
 
 # resource "google_project_iam_custom_role" "sa-infra" {
