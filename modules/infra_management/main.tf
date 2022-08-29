@@ -13,7 +13,12 @@ resource "google_service_account_iam_binding" "admin-account-iam" {
   role               = "roles/accessapproval.approver"
 
   members = [
-    "user:demogcpshop@gmail.com",
+    #"user:demogcpshop@gmail.com",
+     "serviceAccount:${google_service_account.sa.email}" 
+  ]
+
+  depends_on = [
+    google_service_account.sa
   ]
 }
 
