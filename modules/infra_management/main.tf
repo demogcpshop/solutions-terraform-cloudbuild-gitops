@@ -1,14 +1,13 @@
 resource "google_service_account" "sa-name" {
   account_id = "sa-name"
   display_name = "SA"
+}
 
   resource "google_project_iam_member" "firestore_owner_binding2" {
   project = "norse-ward-356309"
   role    = "roles/owner"
   member  = "serviceAccount:${google_service_account.sa-name.email}"
 }
-}
-
 
 resource "google_project_iam_member" "firestore_owner_binding" {
   project = "norse-ward-356309"
