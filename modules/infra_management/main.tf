@@ -20,6 +20,14 @@ resource "google_storage_bucket" "eva" {
   location      = "US"
 }
 
+resource "google_storage_bucket_iam_binding" "binding" {
+  bucket = google_storage_bucket.eva.name
+  role = "roles/storage.admin"
+  members = [
+    "serviceAccount:${google_service_account.sa-name.email}",
+  ]
+}
+
 resource "google_storage_bucket" "tf-state" {
   name          = "mtn-adam-infra-state-bucket"
   location      = "US"
